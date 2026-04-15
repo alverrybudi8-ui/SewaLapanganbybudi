@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Form Kegiatan Bermain Bola</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        margin: 0;
+    }
+
+    .container {
+        max-width: 420px;
+        margin: 60px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+        border-color: #4facfe;
+        outline: none;
+        box-shadow: 0 0 5px #4facfe;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>⚽ Form Kegiatan Bola</h2>
+
+    <form id="formBola">
+        <input type="text" id="nama" placeholder="Nama Lengkap">
+        <div class="error" id="errNama"></div>
+
+        <input type="text" id="kelas" placeholder="Kelas">
+        <div class="error" id="errKelas"></div>
+
+        <select id="jk">
+            <option value="">Jenis Kelamin</option>
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+        </select>
+        <div class="error" id="errJK"></div>
+
+        <select id="olahraga">
+            <option value="">Pilih Olahraga</option>
+            <option>Sepak Bola</option>
+            <option>Basket</option>
+            <option>Voli</option>
+            <option>Futsal</option>
+        </select>
+        <div class="error" id="errOlahraga"></div>
+
+        <input type="date" id="tanggal">
+        <div class="error" id="errTanggal"></div>
+
+        <input type="number" id="durasi" placeholder="Durasi (jam)">
+        <div class="error" id="errDurasi"></div>
+
+        <input type="text" id="tempat" placeholder="Tempat">
+        <div class="error" id="errTempat"></div>
+
+        <button type="submit">Kirim Data</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("formBola").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    let nama = document.getElementById("nama").value.trim();
+    let kelas = document.getElementById("kelas").value.trim();
+    let jk = document.getElementById("jk").value;
+    let olahraga = document.getElementById("olahraga").value;
+    let tanggal = document.getElementById("tanggal").value;
+    let durasi = document.getElementById("durasi").value;
+    let tempat = document.getElementById("tempat").value.trim();
+
+    document.querySelectorAll(".error").forEach(e => e.innerText = "");
+
+    if (nama === "") { errNama.innerText = "Isi nama"; valid = false; }
+    if (kelas === "") { errKelas.innerText = "Isi kelas"; valid = false; }
+    if (jk === "") { errJK.innerText = "Pilih jenis kelamin"; valid = false; }
+    if (olahraga === "") { errOlahraga.innerText = "Pilih olahraga"; valid = false; }
+    if (tanggal === "") { errTanggal.innerText = "Isi tanggal"; valid = false; }
+    if (durasi === "" || durasi <= 0) { errDurasi.innerText = "Durasi tidak valid"; valid = false; }
+    if (tempat === "") { errTempat.innerText = "Isi tempat"; valid = false; }
+
+    if (valid) {
+        window.location.href = "terimakasih.html";
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
